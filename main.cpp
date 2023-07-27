@@ -18,6 +18,7 @@ int main(int argc, char* argv[])
     uint8_t active_color = 255;
     int min_radius = 1;
     float vxlsize = 1.0;
+    int n_threads = 128;
     //////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
 
@@ -46,8 +47,15 @@ int main(int argc, char* argv[])
                 i++;
                 vxlsize = std::stod(argv[i]);
             }
+            else if (string(argv[i]) == "-n_cpu" || string(argv[i]) == "-n_threads")
+			{
+				i++;
+				n_threads = atoi(argv[i]);
+			}
         }
     }
+
+    if (n_threads > 0) omp_set_num_threads(min(n_threads, omp_get_max_threads()));
     //////////////////////////////////////////////////////////////////////////////////////
 
     hdcom::HdCommunication hdcom;
