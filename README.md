@@ -14,5 +14,5 @@ The output is a 32bit tif-image sequence providing the 3D local thickness as dia
 | -color   | uint8  | grayscale value of the label to be evaluated. Default is 255. |
 | -r_min   | int    | Default is 1. Allows discarding incscribed spheres with small radii. |
 | -vxl     | float  | Default 1.0. Allows setting the voxel size for scaling the output to physical length scales. |
+| -n_cpu   | int    | Default is 128. Allows limiting the amount of threads for not clogging up all computational resources. |
 
-@Florian: It might be beneficial to add a CPU limit.
